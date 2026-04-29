@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nandani ❤️</title>
+
+<style>
+body {
+  font-family: Arial;
+  text-align:center;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  color:white;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding:20px;
+  margin:30px;
+  border-radius:20px;
+}
+
+button {
+  padding:10px 20px;
+  margin:10px;
+  border:none;
+  border-radius:20px;
+  background:#ff4b5c;
+  color:white;
+}
+
+.hidden { display:none; }
+
+.shayari { font-size:14px; margin-top:10px; }
+.motivation { font-size:13px; margin-top:5px; }
+
+</style>
+</head>
+
+<body>
+
+<div id="box" class="card"></div>
+
+<audio id="sound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+
+<script>
+
+let step = 0;
+
+let questions = [
+
+{
+q:"🍽️ Khana kha li?",
+shayari:"Apna khayal rakhna bhi pyaar hai ❤️",
+motivation:"Healthy body = strong doctor 💪"
+},
+
+{
+q:"📚 Padhai kar rahi ho?",
+shayari:"Mehnat ka phal doctor banata hai 👩‍⚕️",
+motivation:"NEET topper loading..."
+},
+
+{
+q:"💤 Nind to nahi aa rahi?",
+shayari:"Sapne wahi pure hote jo jag kar dekhe jate 😍",
+motivation:"Focus queen 👑"
+},
+
+{
+q:"📖 Revision kiya?",
+shayari:"Repeat karoge tabhi perfect banoge 💯",
+motivation:"Consistency is power 🔥"
+},
+
+{
+q:"🧠 Biology yaad hai?",
+shayari:"Dil aur dimaag dono strong hone chahiye ❤️",
+motivation:"Future doctor 😎"
+},
+
+{
+q:"💧 Pani piya?",
+shayari:"Khud ka khayal sabse zaruri 💖",
+motivation:"Stay hydrated champ 💪"
+},
+
+{
+q:"🏠 Ghar pe sab thik?",
+shayari:"Apno ka saath sabse bada support ❤️",
+motivation:"Strong mind = success"
+},
+
+{
+q:"😂 Smile kar rahi ho?",
+shayari:"Tumhari smile sabse special 😍",
+motivation:"Positive rehna important hai"
+},
+
+{
+q:"💝 Miss kar rahi ho?",
+shayari:"Door hoke bhi paas ho ❤️",
+motivation:"Love + focus = perfect balance"
+},
+
+{
+q:"🎁 Mujhse gift logi?",
+shayari:"Jo tum chaho wo mile 💖",
+motivation:"Dream big"
+}
+
+];
+
+function showQuestion() {
+
+let data = questions[step];
+
+document.getElementById("box").innerHTML = `
+<h2>${data.q}</h2>
+<div class="shayari">${data.shayari}</div>
+<div class="motivation">${data.motivation}</div>
+
+<button onclick="yes()">Haa</button>
+<button onclick="no()">Naa</button>
+`;
+
+}
+
+function yes(){
+document.getElementById("sound").play();
+
+step++;
+
+if(step < questions.length){
+showQuestion();
+}else{
+document.getElementById("box").innerHTML = `
+<h2>💖 Nandani Future Doctor 👩‍⚕️ 💖</h2>
+<p>Tum sabse best ho 😘</p>
+<input placeholder="Kya chahiye?" id="gift">
+<br><br>
+<button onclick="final()">Submit</button>
+`;
+}
+}
+
+function no(){
+document.getElementById("sound").play();
+
+document.getElementById("box").innerHTML = `
+<h2>😡 Kyu nahi??</h2>
+<p>Abhi karo 😤 warna gussa aa jayega 😂</p>
+<button onclick="showQuestion()">Ab kar li 😅</button>
+`;
+}
+
+function final(){
+let gift = document.getElementById("gift").value;
+
+document.getElementById("box").innerHTML = `
+<h2>💝 Tumhari pasand: ${gift}</h2>
+<p>Main jarur dilaunga ❤️</p>
+`;
+}
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
